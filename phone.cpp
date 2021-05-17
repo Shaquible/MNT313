@@ -6,6 +6,7 @@ int main()
 	float batcostrate = 0.0095; // cost of battery per mm^3
 	float L, W, D, R; 
 	float pi = 3.14;
+	printf("Length, Width, Depth, Radius: ");
 	scanf("%f, %f, %f, %f", &L, &W, &D, &R); //In the console, enter length, width, depth and radius on a single line, each separated by a comma and space
 	float radjust = pow(R,2) - pi * pow(R,2) / 4; //calculates the area of the square corner minus the circle
 	float A = L * W - 4 * radjust; //computes the area of the top of the phone by calculating it as a square and subtracting the missing corner space
