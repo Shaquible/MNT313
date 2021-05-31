@@ -6,20 +6,22 @@ int main()
 	float pi =3.14;
 	float g = 9.81;
 	bool halfTank = false;
-	float initialHeight, tankRad, pipeRad,avgV,ht,h30;
+	float initialHeight, tankRad, pipeRad,avgV,ht,h30,v,flow;
 	int finalT;
 	
 	scanf("%f, %f, %f, %d", &initialHeight, &tankRad, &pipeRad, &finalT);
-	float curVol= pow(tankRad, 2) * pi *initialHeight;
+	float tankArea = pi * pow(tankRad, 2);
+	float pipeArea = pi *pow(pipeRad, 2);
+	float curVol= tankArea * initialHeight;
 	float curH = initialHeight;
+	
 	for (int t = 0; t <= finalT || t <= 1800; t++){
-		float v = 0.5 * sqrt(g*curH);
-		float flow = v * pi * pow(pipeRad, 2);
-		curVol = curVol - flow;
-		curH = curVol/(pi *pow(tankRad, 2));
+		v = sqrt(0.5*g*curH);
+		flow = v * pipeArea;
+		curVol -= flow;
+		curH = curVol/tankArea;
 		if (t == finalT){
-			//avgV = (volInit - curVol)/t;
-			avgV = v;
+			avgV = (initialHeight*tankArea -curVol)/(t*pipeArea);
 		ht = curH;
 			if (curH <= initialHeight/2){
 			halfTank = true;
@@ -30,9 +32,9 @@ int main()
 		}
 		}
 	
-			printf("Average velocity value: %.2f\n", avgV);
-			printf("Height value after 30 min: %.2f\n", h30);
-			printf("Height value after %i seconds: %.2f\n", finalT, ht);
+			printf("Average velocity value: %.2f m/s\n", avgV);
+			printf("Height value after 30 min: %.2f m\n", h30);
+			printf("Height value after %i seconds: %.2f m\n", finalT, ht);
 			if (halfTank == true){
 				printf("Tank half drained\n");
 			}
