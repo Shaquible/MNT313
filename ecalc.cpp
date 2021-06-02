@@ -6,7 +6,7 @@ int main(void)
 {
 	int x = 1;
 	double e = 1;
-	for (int i = 1; i < 20; i++){
+	for (int i = 1; i < 34; i++){
 	float k= pow(x,i);
 	float t = fact(i);
 	e += k/t;
@@ -15,7 +15,7 @@ int main(void)
 }
 
 int fact(int i){
-	int x=1;
+	unsigned long x=1;
 	for (int j =1; j <= i; j++){
 	x = x * j;
 	}
@@ -23,7 +23,7 @@ int fact(int i){
 }
 
 int pow(int x, int y){
-	int j = x;
+	unsigned long j = x;
 	for (int i = 1; i < y; i++){
 	 j = j * x;
 	}
