@@ -17,7 +17,7 @@ int main() {
 	float pipeArea = pi *pow(pipeRad, 2);
 	float curVol= tankArea * initialHeight;
 	float curH = initialHeight;
-	//the for loop iterates for each second to update the height and volume of the tank assmuing that velocity is constant for each second
+	//the for loop iterates for each second to update the height and volume of the tank assuming that velocity is constant for each second
 	for (int t = 0; t <= finalT || t <= 1800; t++) {
 		//calculates the velocity of water leaving the pipe
 		v = sqrt(0.5*g*curH);
