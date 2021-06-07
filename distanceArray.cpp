@@ -19,9 +19,11 @@ int main()
 		if (i == 11)
 		{
 			printf("(%0.1f,%0.1f)\n", coordinates[i][0], coordinates[i][1]);
-			continue;
 		}
-		printf("(%0.1f,%0.1f),", coordinates[i][0], coordinates[i][1]);
+		else
+		{
+			printf("(%0.1f,%0.1f),", coordinates[i][0], coordinates[i][1]);
+		}
 		if (i == 5)
 		{
 			printf("\n");
