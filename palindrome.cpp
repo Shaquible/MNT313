@@ -1,9 +1,11 @@
-#include<stdio.h>
+#include<iostream>
 #include<string>
 using namespace std;
 int main(void)
 {
-	string forward = "test";
+	string forward;
+	cout << "Enter your word:";
+	getline (cin, forward);
 	string reverse = forward;
 	int len = forward.length();
 	for (int i = 0; i < len; i++) 
@@ -14,8 +16,8 @@ int main(void)
 	int comp = forward.compare(reverse);
 	if(comp == 0)
 	{
-		printf("palindrome\n");
+		cout <<"\nPalindrome\n";
 		return 1;
 	}
-	printf("not palindrome\n");
+	cout <<"\nNot a palindrome\n";
 }
