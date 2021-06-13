@@ -9,10 +9,10 @@ int main()
 	{
 		//In the console, enter the 12 coordinate values on a single line separated by comma and by spaces (ie. 1.1,5.6 5.5,8.2 etc.)
 		scanf("%f, %f", &coordinates[i][0], &coordinates[i][1]);
-		//prints the array to the terminal
 	}
 	//initializes the array to store the center x and y
 	float center[2] = {0};
+	//prints the array to the terminal
 	//for loop that prints the coordinate array with special conditions for printing the last coordinate of each row
 	for (int i = 0; i < N; i++)
 	{
@@ -35,7 +35,7 @@ int main()
 	printf("\n");
 	center[1] = center[1] / N;
 	center[0] = center[0] / N;
-	//initializes and two arrays to store the distance from each point to another and the average distance from one point to all others
+	//initializes two arrays to store the distance from each point to another and the average distance from one point to all others
 	float distance[N][N];
 	float avgDist[(N)];
 	//calculates the distance from point i to j and sums the distances from i to each j to average them at the end of the j for loop
