@@ -1,17 +1,23 @@
 #include <string>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 using namespace std;
-float getFloat(string phrase)
-{
-    float x;
-    printf("%s", phrase.c_str());
-    cin >> x;
-    printf("%f\n", x);
-    return x;
-}
+
 int main(void)
 {
-    float x = getFloat("test\n");
-    printf("%d\n", x);
+    int grades[15];
+    string rawline, rawvalue;
+    ifstream fileStream("grades.txt");
+    for (int i = 0; i < 15; i++)
+    {
+        getline(fileStream, rawline);
+        stringstream lineStream(rawline);
+        getline(lineStream, rawvalue, ',');
+        istringstream(rawvalue) >> grades[i];
+        printf("%i\n", grades[i]);
+    }
 }
