@@ -9,15 +9,23 @@ using namespace std;
 
 int main(void)
 {
-    int grades[15];
+  int num_word = 0;
+  int test = 0;
+  string word;
     string rawline, rawvalue;
     ifstream fileStream("grades.txt");
-    for (int i = 0; i < 15; i++)
+    while (getline(fileStream, rawline))
     {
-        getline(fileStream, rawline);
         stringstream lineStream(rawline);
-        getline(lineStream, rawvalue, ',');
-        istringstream(rawvalue) >> grades[i];
-        printf("%i\n", grades[i]);
+        while (lineStream >> word)
+        {
+          if (word.compare("test") == 0)
+          {
+            num_word +=1;
+          }
+          }
+        }
+     printf("%i", num_word);  
     }
-}
+//while (getline(fileStream, rawLine))  the stringstream lineStream(rawline) reads the line in line by line to a string
+ //while(linestream >> string) coppies the line to a string word by word
