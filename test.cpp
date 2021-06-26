@@ -17,7 +17,7 @@ int main(void)
     while (getline(fileStream, rawline))
     {
         stringstream lineStream(rawline);
-        while (lineStream >> word)
+        while (lineStream>> word)
         {
           if (word.compare("test") == 0)
           {
