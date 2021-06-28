@@ -132,3 +132,36 @@ for (int i = 0; i < numLines; i++)
   }
 }
 
+//if the number of line  in the file is unknown use instead of the outer for loop
+while (getline(fileStream, rawline))
+
+//for reading in a text file one word at a time use the while loop on the second line
+
+string word;
+  string rawline, rawvalue;
+  ifstream fileStream("grades.txt");
+  while (getline(fileStream, rawline))
+  {
+    stringstream lineStream(rawline);
+      while (lineStream>> word)
+       {
+        
+        }
+//to output to a file
+FILE *outFile = fopen("outputFileA.txt", "w");
+
+    for (int i = 0; i < Nd; i++)
+    {
+        int z = 16
+        //fprintf prints a c string to the file so you have to call str.c_str() instead of a normal c++ string class string
+        fprintf(outFile, "%i,", z);
+        for (int j = 0; j < Nk; j++)
+        {
+            fprintf(outFile, "%i", z);
+        }
+        //adds new line to the outfile
+        fprintf(outFile, "\n");
+    }
+    //closes file
+    fclose(outFile);
+}
