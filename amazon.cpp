@@ -40,8 +40,6 @@ public:
         return totalRev;
     }
 };
-}
-;
 
 int main(void)
 {
