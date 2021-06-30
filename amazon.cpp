@@ -1,4 +1,7 @@
-struct payload
+#include <iostream>
+#include <math.h>
+using namespace std;
+struct center
 {
     int numCustomer;
     float avgPrice;
@@ -10,8 +13,9 @@ class economics
 public:
     float costPerKG = 4.7;
     float targetRev = 36000;
-
-    int customers(payload center[], int numCent)
+    center center[50];
+    int numCent;
+    int customers(void)
     {
         int totalCustomers = 0;
         for (int i = 0; i < numCent; i++)
@@ -21,26 +25,59 @@ public:
         return totalCustomers;
     }
 
-    int weight(payload center[], int numCent)
+    int weight(void)
     {
-        int totalWeight = 0;
+        float totalWeight = 0;
         for (int i = 0; i < numCent; i++)
         {
             totalWeight += center[i].numCustomer * center[i].avgWeight;
         }
-        return totalWeight;
+        int Weight = round(totalWeight);
+        return Weight;
     }
-    int revenue(payload center[], int numCent)
+    int revenue(void)
     {
-        int totalRev = 0;
+        float totalRev = 0;
         for (int i = 0; i < numCent; i++)
         {
-            totalRev += center[i].numCustomer * center[i].avgPrice;
+            totalRev += center[i].numCustomer * (center[i].avgPrice - center[i].avgWeight * costPerKG);
         }
-        return totalRev;
+        int Rev = round(totalRev);
+        return Rev;
+    }
+    void profitable(void)
+    {
+        if (revenue() >= targetRev)
+        {
+            cout << "Company is profitable\n";
+        }
+        cout << "Company is not profitable\n";
     }
 };
 
 int main(void)
 {
+    economics amazon;
+    cout << "Input number of centers:\n";
+    cin >> amazon.numCent;
+    cout << "Input customer data for all centers:\n";
+    for (int i = 0; i < amazon.numCent; i++)
+    {
+        cin >> amazon.center[i].numCustomer;
+    }
+    cout << "Input item average price data for all centers:\n";
+    for (int i = 0; i < amazon.numCent; i++)
+    {
+        cin >> amazon.center[i].avgPrice;
+    }
+    cout << "Input item average weight data for all centers:\n";
+    for (int i = 0; i < amazon.numCent; i++)
+    {
+        cin >> amazon.center[i].avgWeight;
+    }
+    cout << "Total customers: " << amazon.customers() << '\n';
+    cout << "Total weight: " << amazon.weight() << " kg" << '\n';
+    cout << "Total revenue: $" << amazon.revenue() << '\n';
+    cout << "Average revenue: $" << amazon.revenue() / amazon.numCent << '\n';
+    amazon.profitable();
 }
