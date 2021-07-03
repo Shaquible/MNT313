@@ -1,6 +1,5 @@
 #include <iostream>
 #include <math.h>
-#include <stdio.h>
 using namespace std;
 struct center
 {
@@ -51,8 +50,10 @@ public:
         if (revenue() >= targetRev)
         {
             cout << "Company is profitable\n";
+            return;
         }
         cout << "Company is not profitable\n";
+        return;
     }
 };
 
