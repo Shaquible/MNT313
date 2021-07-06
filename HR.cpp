@@ -3,11 +3,11 @@
 #include <stdio.h>
 #define N 20
 //Stack defined to do the opperations for the correct hiring firing practices
-//overflow and underflow not included as they are not necassary for this specific applicaion
+//overflow and underflow not included as they are not nessascary for this specific application
 class Stack
 {
 public:
-//declares the array used for the stack and the top of the stack
+    //declares the array used for the stack and the top of the stack
     int stack[N];
     int top;
     //initializes the top of the stack to 0
@@ -45,18 +45,17 @@ int main(void)
         if (operation == '+')
         {
             employees.push(id);
-
         }
         if (operation == '-')
         {
-          //popping an employee from the stack reflects the proper firing decision
+            //popping an employee from the stack reflects the proper firing decision
             employees.pop();
             //checks if the id removed from the stack matches the id that the command told to remove
             //if the employee fired was not the one at the top of the stack, FAIL is printed and  the program exits
             if (employees.stack[employees.top] != id)
             {
-              printf("FAIL\n");
-              return 0;
+                printf("FAIL\n");
+                return 0;
             }
         }
     }
