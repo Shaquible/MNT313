@@ -1,24 +1,27 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <stdio.h>
-#include <algorithm>
 #define N 20
 //Stack defined to do the opperations for the correct hiring firing practices
+//overflow and underflow not included as they are not necassary for this specific applicaion
 class Stack
 {
 public:
+//declares the array used for the stack and the top of the stack
     int stack[N];
     int top;
+    //initializes the top of the stack to 0
     Stack()
     {
         top = 0;
     }
+    //method to add a new element to the stack
     void push(int data)
     {
         stack[top] = data;
         top++;
     }
+    //method to remove the top element  from the stack
     void pop()
     {
         top--;
@@ -33,8 +36,6 @@ int main(void)
     //Ask for the operations and IDs
     int numberOfHROperations;
     scanf("%i", &numberOfHROperations);
-    //vector used to store the ids of employees currently employed
-    vector<int> ids;
     printf("Input the operations and IDs:\n");
     for (int i = 0; i < numberOfHROperations; i++)
     {
@@ -44,26 +45,22 @@ int main(void)
         if (operation == '+')
         {
             employees.push(id);
-            ids.push_back(id);
+
         }
         if (operation == '-')
         {
+          //popping an employee from the stack reflects the proper firing decision
             employees.pop();
-            vector<int>::iterator it = find(ids.begin(), ids.end(), id);
-            ids.erase(it);
+            //checks if the id removed from the stack matches the id that the command told to remove
+            //if the employee fired was not the one at the top of the stack, FAIL is printed and  the program exits
+            if (employees.stack[employees.top] != id)
+            {
+              printf("FAIL\n");
+              return 0;
+            }
         }
     }
-
-    //Solve the question
-    for (int i = 0; i < employees.top; i++)
-    {
-        if (ids[i] == employees.stack[i])
-        {
-            continue;
-        }
-        cout << "FAIL" << endl;
-        return 0;
-    }
-    cout << "PASS" << endl;
+    //if a failure condition is not met, the program prints PASS and exits
+    printf("PASS\n");
     return 0;
 }
