@@ -1,9 +1,6 @@
-#include <iostream>
-#include <string>
 #include <stdio.h>
 #define N 20
 //Stack defined to do the opperations for the correct hiring firing practices
-//overflow and underflow not included as they are not nessascary for this specific application
 class Stack
 {
 public:
@@ -44,6 +41,7 @@ int main(void)
         scanf(" %c%d", &operation, &id);
         if (operation == '+')
         {
+            //adds employee id to the stack when a + is included
             employees.push(id);
         }
         if (operation == '-')
