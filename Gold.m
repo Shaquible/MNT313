@@ -4,7 +4,7 @@ rawData = dlmread('goldDataA.txt');
 fprintf('ID, Gold Mass [g], Sulfur Mass [Kg], Arsenic Mass [Kg], Cutoff conditions? (Y/N)\n');
 %initializing an array for the output data
 outputData = size(10,5);
-%setting a value in the output for if the sample passes the cutoff
+%setting a value in the output showing if the sample passes the cutoff
 for i = 1:1:10
     if rawData(i,5) < 1 || rawData(i,6) > 5 || rawData (i,7) > 1
         outputData(i,5) = 'N';
@@ -14,7 +14,7 @@ for i = 1:1:10
 end
 %initializes an array for the values that will be used to sort the rows
 sort_array = size(10);
-%sets values for gold, sulfer, and arsenic mass and index number
+%sets values for gold, sulfur, and arsenic mass and index number
 for i = 1:1:10
    totalMass = rawData(i,2) * rawData(i,3) *rawData(i,3) * pi * rawData(i,4);
    outputData(i,1) = i; 
@@ -33,7 +33,7 @@ for i = 1:1:10
     temp(i,j) = outputData(index(i),j);
     end
 end
-%copys the temporary array back into the main array
+%copies the temporary array back into the main array
 outputData = temp;
 %prints data to the screen
 for i = 1:1:10
